@@ -1,0 +1,72 @@
+\documentclass[dvipsnames]{beamer}
+\beamertemplatenavigationsymbolsempty
+\usetheme{Boadilla}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage[cal=boondoxo]{mathalpha}
+
+% Change horizontal spacing
+\setlength{\tabcolsep}{3pt}
+
+\usepackage[none]{hyphenat} % no hyphenation
+
+\usepackage{array}
+
+\usepackage[style=authoryear,backend=biber,citetracker=true]{biblatex}
+\addbibresource{references.bib}
+
+\newcommand{\credit}[2]{\par\hfill \footnotesize #1 credit:~\itshape\citeauthor{#2}}
+\renewcommand{\cite}[1]{(\citeauthor{#1}, \citeyear{#1})}
+\newcommand{\matr}[1]{#1}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+
+\title%[]
+{Shapley Values}
+%\subtitle{}
+\author{Gianmarco Midena}
+\institute{Aalto University}
+\date{12 March 2024}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item How each feature affects the prediction of a data point.
+	\end{itemize}
+\end{frame}
+
+\input{sections/linear_model_feature_contribution.tex}
+
+\begin{frame}{Feature Contribution in General}
+	\begin{itemize}
+		\item \emph{Can we do the same for any type of model?}
+		\\It would be great to have this as a model-agnostic tool.
+		\item \red{Since we usually do not have similar weights in other model types, we need a different solution.}
+		\item Possible solution: \underline{Shapley value}
+		\begin{itemize}
+			\item Field: Cooperative Game Theory
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\input{sections/shapley_values.tex}
+
+%\section{References}
+%\begin{frame}[allowframebreaks]
+%\frametitle{References}
+%\printbibliography
+%\end{frame}
+
+\end{document}
