@@ -48,6 +48,57 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Example - Probability of Cervical Cancer for a Woman}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/shapley-cervical-plot-1.jpeg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Risk Factors for Cervical Cancer}
+\begin{itemize}
+	\item Has patient ever had a sexually transmitted disease (STD) [binary]
+	\item Number of sexual partners
+	\item Number of STD diagnoses
+	\item Number of pregnancies
+	\item First sexual intercourse (age in years)
+	\item Hormonal contraceptives (in years)
+	\item Age in years
+	\item Hormonal contraceptives [binary]
+	\item Smokes (binary)
+	\item Number of years with an intrauterine device (IUD)
+	\item Intrauterine device (IUD) [binary]
+	\item Time since first STD diagnosis
+	\item Time since last STD diagnosis
+	\item Smokes (in years)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example - Number of Rented Bikes for a Day}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/shapley-bike-plot-1.jpeg}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Bike Rentals}
+	\begin{itemize}
+		\item Temperature in degrees Celsius.
+		\item The season, either spring, summer, fall or winter.
+		\item Indicator whether the day was a working day or weekend.
+		\item Indicator whether the day was a holiday or not.
+		\item Wind speed in km per hour.
+		\item The year, either 2011 or 2012.
+		\item Number of days since the 01.01.2011 (the first day in the dataset). This feature was introduced to take account of the trend over time.
+		\item The weather situation on that day. One of:
+		\begin{itemize}
+			\item clear, few clouds, partly cloudy, cloudy
+			\item mist + clouds, mist + broken clouds, mist + few clouds, mist
+			\item light snow, light rain + thunderstorm + scattered clouds, light rain + scattered clouds
+			\item heavy rain + ice pallets + thunderstorm + mist, snow + mist
+		\end{itemize}
+		\item Relative humidity in percent (0 to 100).
+	\end{itemize}
+\end{frame}
+
 \input{sections/linear_model_feature_contribution.tex}
 
 \begin{frame}{Feature Contribution in General}
