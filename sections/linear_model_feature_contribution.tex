@@ -16,9 +16,13 @@
 \begin{frame}{Linear Model - Feature Contribution}
 	\begin{itemize}
 		\item $j$-th feature contribution $\phi_j$
-		\begin{equation}
-			\phi_j(\hat{f})=w_{j}x_j-E(w_{j}X_{j})=w_{j}x_j-w_{j}E(X_{j})
-		\end{equation}
+		\begin{align}
+			\begin{split}
+				\phi_j(\hat{f})
+				&=w_{j}x_j-E(w_{j}X_{j})\\
+				&=w_{j}x_j-w_{j}E(X_{j})
+			\end{split}
+		\end{align}
 		\begin{itemize}
 			\item $j$-th feature effect minus average $j$-th feature effect
 			\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
@@ -26,11 +30,13 @@
 	\end{itemize}
 \end{frame}
 \begin{frame}{Linear Model - Total Feature Contribution}
-	\begin{align*}
-		\sum_{j=1}^{p}\phi_j(\hat{f}) =&\sum_{j=1}^p(w_{j}x_j-E(w_{j}X_{j}))\\
-		=&(w_0+\sum_{j=1}^pw_{j}x_j)-(w_0+\sum_{j=1}^{p}E(w_{j}X_{j}))\\
-		=&\hat{f}(\bm{x})-E(\hat{f}(X))
-	\end{align*}
+	\begin{align}
+		\begin{split}
+			\sum_{j=1}^{p}\phi_j(\hat{f}) =&\sum_{j=1}^p(w_{j}x_j-E(w_{j}X_{j}))\\
+			=&(w_0+\sum_{j=1}^pw_{j}x_j)-(w_0+\sum_{j=1}^{p}E(w_{j}X_{j}))\\
+			=&\hat{f}(\bm{x})-E(\hat{f}(X))
+		\end{split}
+	\end{align}
 	\begin{itemize}
 		\item predicted value minus average predicted value
 		\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
