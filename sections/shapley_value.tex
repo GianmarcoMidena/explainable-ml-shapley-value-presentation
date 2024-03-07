@@ -18,29 +18,8 @@
 	\item $p$: nr. features
 \end{itemize}
 \end{frame}
-\begin{frame}{Shapley Value - The Value Function}
-\begin{equation}
-	val_{\bm{x}}(S)=\int\hat{f}(x_{1},\ldots,x_{p})d\mathbb{P}_{x\notin{}S}-E_X(\hat{f}(X))
-\end{equation}
-\begin{itemize}
-	\item Payout function for coalitions of players (feature values)
-	\item Predicts feature values in $S$
-	\item Marginalizes over features that are not in $S$
-	\item Multiple integrations for each feature that is not in $S$
-	\item $\bm{x}$: data instance
-\end{itemize}
-\end{frame}
 
-\begin{frame}{Shapley Value - The Value Function - Example}
-\begin{equation}
-val_{\bm{x}}(\{1,3\})=\int_{\mathbb{R}}\int_{\mathbb{R}}\hat{f}(x_{1},X_{2},x_{3},X_{4})d\mathbb{P}_{X_2X_4}-E_X(\hat{f}(X))
-\end{equation}
-\begin{itemize}
-	\item $S = \{1,3\}$: features in coalition
-	\item $p = 4$: tot. model features
-	\item $\bm{x}$: data instance
-\end{itemize}
-\end{frame}
+\input{sections/shapley_value_function.tex}
 
 \input{sections/shapley_value_properties.tex}
 
@@ -68,5 +47,5 @@ val_{\bm{x}}(\{1,3\})=\int_{\mathbb{R}}\int_{\mathbb{R}}\hat{f}(x_{1},X_{2},x_{3
 		\item uses the random feature value $z^m_j$
 	\end{itemize}
 \end{itemize}
-\footnotetext[1]{\citeauthor{vstrumbelj2014explaining} (\citeyear{vstrumbelj2014explaining})}
+\footnotetext[3]{\citeauthor{vstrumbelj2014explaining} (\citeyear{vstrumbelj2014explaining})}
 \end{frame}

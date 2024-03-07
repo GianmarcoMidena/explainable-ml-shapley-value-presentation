@@ -17,10 +17,14 @@
 
 \usepackage{array}
 
-\usepackage[style=authoryear,backend=biber,citetracker=true]{biblatex}
+\usepackage{cancel}
+
+\usepackage[style=authoryear,maxcitenames=2,backend=biber,citetracker=true]{biblatex}
 \addbibresource{references.bib}
 
-\newcommand{\credit}[2]{\par\hfill \footnotesize #1 credit:~\itshape\citeauthor{#2}}
+\usepackage{verbatim}
+
+\newcommand{\credit}[2]{\par\hfill \footnotesize #1 credit:~\itshape\citeauthor{#2} (\citeyear{#2})}
 \renewcommand{\cite}[1]{(\citeauthor{#1}, \citeyear{#1})}
 \newcommand{\matr}[1]{#1}
 
@@ -52,9 +56,10 @@
 	\begin{center}
 		\includegraphics[scale=0.6]{images/shapley-cervical-plot-1.jpeg}
 	\end{center}
+\credit{Image}{molnar2020interpretable}
 \end{frame}
 
-\begin{frame}{Risk Factors for Cervical Cancer}
+\begin{frame}{Risk Factors for Cervical Cancer\footnotemark}
 \begin{itemize}
 	\item Has patient ever had a sexually transmitted disease (STD) [binary]
 	\item Number of sexual partners
@@ -71,32 +76,35 @@
 	\item Time since last STD diagnosis
 	\item Smokes (in years)
 \end{itemize}
+\footnotetext[1]{\citeauthor{risk_factors_dataset} (\citeyear{risk_factors_dataset})}
 \end{frame}
 
 \begin{frame}{Example - Number of Rented Bikes for a Day}
 	\begin{center}
 		\includegraphics[scale=0.6]{images/shapley-bike-plot-1.jpeg}
 	\end{center}
+	\credit{Image}{molnar2020interpretable}
 \end{frame}
 
-\begin{frame}{Bike Rentals}
+\begin{frame}{Bike Rental Features\footnotemark}
 	\begin{itemize}
-		\item Temperature in degrees Celsius.
-		\item The season, either spring, summer, fall or winter.
-		\item Indicator whether the day was a working day or weekend.
-		\item Indicator whether the day was a holiday or not.
-		\item Wind speed in km per hour.
-		\item The year, either 2011 or 2012.
-		\item Number of days since the 01.01.2011 (the first day in the dataset). This feature was introduced to take account of the trend over time.
-		\item The weather situation on that day. One of:
-		\begin{itemize}
+		\item Temperature in degrees Celsius
+		\item Season: spring, summer, fall or winter
+		\item Working day or weekend
+		\item Holiday or not
+		\item Wind speed in km per hour
+		\item Year: 2011 or 2012
+		\item Nr. days since 01.01.2011 (the first day in the dataset).
+		\item Weather situation:
+		\begin{enumerate}[a]
 			\item clear, few clouds, partly cloudy, cloudy
 			\item mist + clouds, mist + broken clouds, mist + few clouds, mist
 			\item light snow, light rain + thunderstorm + scattered clouds, light rain + scattered clouds
 			\item heavy rain + ice pallets + thunderstorm + mist, snow + mist
-		\end{itemize}
-		\item Relative humidity in percent (0 to 100).
+		\end{enumerate}
+		\item Relative humidity percentage
 	\end{itemize}
+	\footnotetext[2]{\citeauthor{bike_sharing_dataset} (\citeyear{bike_sharing_dataset})}
 \end{frame}
 
 \input{sections/linear_model_feature_contribution.tex}
@@ -114,6 +122,32 @@
 \end{frame}
 
 \input{sections/shapley_value.tex}
+
+\begin{frame}[fragile]{Some Implementations}
+	\begin{itemize}
+		\item \verb|fastshap| (R)~\cite{jethani2021fastshap}
+		\item \verb|iml| (R)~\cite{molnar2018iml}
+		\item \verb|breakDown| (R)~\cite{staniak2018explanations}
+		\item \verb|Shapley.jl| (Julia)~\footnotemark
+	\end{itemize}
+	\footnotetext[4]{\href{https://gitlab.com/ExpandingMan/Shapley.jl}{https://gitlab.com/ExpandingMan/Shapley.jl}}
+\end{frame}
+
+\begin{frame}{Shapley Value in Short}
+	\begin{itemize}
+		\item Permutation-based
+		\item Model-agnostic
+		\item Solid theory
+		\item Full-explanation
+		\begin{itemize}
+			\item All the features
+			\item Non sparse (proper subset of features)
+		\end{itemize}
+		\item Model-free
+		\item Data access or generation
+		\item Building block in SHAP~\cite{lundberg2017unified}
+	\end{itemize}
+\end{frame}
 
 \section{References}
 \begin{frame}[allowframebreaks]
