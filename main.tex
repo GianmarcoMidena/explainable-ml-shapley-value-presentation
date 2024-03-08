@@ -26,6 +26,7 @@
 
 \newcommand{\credit}[2]{\par\hfill \footnotesize #1 credit:~\itshape\citeauthor{#2} (\citeyear{#2})}
 \renewcommand{\cite}[1]{(\citeauthor{#1}, \citeyear{#1})}
+\newcommand{\citefoot}[1]{\citeauthor{#1} (\citeyear{#1})}
 \newcommand{\matr}[1]{#1}
 
 \newcommand{\red}[1]{{\color{red} #1}}
@@ -46,11 +47,7 @@
 %\tableofcontents
 %\end{frame}
 
-\begin{frame}{Introduction}
-	\begin{itemize}
-		\item How each feature affects the prediction of a data point.
-	\end{itemize}
-\end{frame}
+\input{sections/attribution_problem.tex}
 
 \begin{frame}{Example - Probability of Cervical Cancer for a Woman}
 	\begin{center}
@@ -76,7 +73,7 @@
 	\item Time since last STD diagnosis
 	\item Smokes (in years)
 \end{itemize}
-\footnotetext[1]{\citeauthor{risk_factors_dataset} (\citeyear{risk_factors_dataset})}
+\footnotetext[2]{\citeauthor{risk_factors_dataset} (\citeyear{risk_factors_dataset})}
 \end{frame}
 
 \begin{frame}{Example - Number of Rented Bikes for a Day}
@@ -104,7 +101,7 @@
 		\end{enumerate}
 		\item Relative humidity percentage
 	\end{itemize}
-	\footnotetext[2]{\citeauthor{bike_sharing_dataset} (\citeyear{bike_sharing_dataset})}
+	\footnotetext[3]{\citeauthor{bike_sharing_dataset} (\citeyear{bike_sharing_dataset})}
 \end{frame}
 
 \input{sections/linear_model_feature_contribution.tex}
@@ -112,25 +109,31 @@
 \begin{frame}{Feature Contribution in General}
 	\begin{itemize}
 		\item \emph{Can we do the same for any type of model?}
-		\\It would be great to have this as a model-agnostic tool.
-		\item \red{Since we usually do not have similar weights in other model types, we need a different solution.}
-		\item possible solution: \underline{Shapley value}
 		\begin{itemize}
-			\item field: Cooperative Game Theory
+			\item Model-agnostic
+			\item No assumptions on features interactions
+		\end{itemize}
+		\item \red{Nonlinear models need a different solution!}
+		\item Possible solution: \underline{Shapley value}
+		\begin{itemize}
+			\item Field: cooperative game theory
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \input{sections/shapley_value.tex}
 
-\begin{frame}[fragile]{Some Implementations}
+\input{sections/shapley_value_issues.tex}
+
+\begin{frame}[fragile]{Software}
 	\begin{itemize}
 		\item \verb|fastshap| (R)~\cite{jethani2021fastshap}
 		\item \verb|iml| (R)~\cite{molnar2018iml}
 		\item \verb|breakDown| (R)~\cite{staniak2018explanations}
 		\item \verb|Shapley.jl| (Julia)~\footnotemark
+		\item \dots
 	\end{itemize}
-	\footnotetext[4]{\href{https://gitlab.com/ExpandingMan/Shapley.jl}{https://gitlab.com/ExpandingMan/Shapley.jl}}
+	\footnotetext[5]{\href{https://gitlab.com/ExpandingMan/Shapley.jl}{https://gitlab.com/ExpandingMan/Shapley.jl}}
 \end{frame}
 
 \begin{frame}{Shapley Value in Short}

@@ -1,0 +1,37 @@
+\begin{frame}{Problems with Shapley Values}
+\begin{itemize}
+	\item Relying on training data can produce non-intuitive attributions
+	\begin{itemize}
+		\item Unused features can still receive attribution
+	\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{Issue: Multiplicity of Shapley Values}
+	\begin{itemize}
+		\item Case: training data dependency
+		\begin{itemize}
+			\item \textbf{Sparsity} obscures model properties
+			\begin{itemize}
+				\item Features not relevant for the model may receive attribution
+			\end{itemize}
+		\end{itemize}
+		\item Multiple extensions to continuous features
+	\end{itemize}
+\end{frame}
+\begin{frame}{What-if Analysis}
+	\begin{itemize}
+		\item Case: intervention on the feature
+		\begin{itemize}
+			\item Potential issue: out-of-distribution inputs
+			\item Fix: regularization
+		\end{itemize}
+		\item Case: marginalize the feature over the training data
+		\begin{itemize}
+			\item Issue: counter-intuitive explanations with sparse training data
+		\end{itemize}
+		\item Ideal fix: model the true feature distribution
+		\begin{itemize}
+			\item (typically) \red{Harder than original prediction problem!}
+		\end{itemize}
+	\end{itemize}
+\end{frame}

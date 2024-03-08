@@ -1,12 +1,30 @@
 \begin{frame}{Shapley Value - Properties}
 	\begin{enumerate}
+		\item Dummy
 		\item Efficiency
 		\item Symmetry
-		\item Dummy
 		\item Additivity
 	\end{enumerate}
 	\begin{itemize}
+		\item Axioms
 		\item Fair Payout
+	\end{itemize}
+\end{frame}
+\begin{frame}{Shapley Value - Dummy}
+	If
+	\begin{equation}
+		val_{\bm{x}}(S\cup\{j\})=val(S)
+	\end{equation}
+	for all
+	\begin{equation*}
+		S\subseteq\{1,\ldots,p\}
+	\end{equation*}
+	then
+	\begin{equation*}
+		\phi_j=0
+	\end{equation*}
+	\begin{itemize}
+		\item A feature $j$ that does not change the predicted value - regardless of which coalition of feature values it is added to - should have a Shapley value of 0.
 	\end{itemize}
 \end{frame}
 \begin{frame}{Shapley Value - Efficiency}
@@ -35,27 +53,22 @@
 		\\if they contribute equally to all possible coalitions.
 	\end{itemize}
 \end{frame}
-\begin{frame}{Shapley Value - Dummy}
+\begin{frame}{Shapley Value - Additivity}
 	If
 	\begin{equation}
-		val_{\bm{x}}(S\cup\{j\})=val(S)
+		val_{\bm{x} + \bm{y}}(S)=val_{\bm{x}}(S) + val_{\bm{y}}(S)
 	\end{equation}
 	for all
 	\begin{equation*}
-		S\subseteq\{1,\ldots,p\}
+		\bm{x}, \bm{y} \in \mathcal{X},\; S\subseteq\{1,\ldots, p\}
 	\end{equation*}
 	then
 	\begin{equation*}
-		\phi_j=0
+		\phi(\bm{x} + \bm{y})=\phi(\bm{x}) + \phi(\bm{y})
 	\end{equation*}
-	\begin{itemize}
-		\item A feature $j$ that does not change the predicted value - regardless of which coalition of feature values it is added to - should have a Shapley value of 0.
-	\end{itemize}
-\end{frame}
-\begin{frame}{Shapley Value - Additivity}
-	\begin{equation}
-		\phi_j+\phi_j^{+}
-	\end{equation}
+	%\begin{equation}
+	%	\phi_j+\phi_j^{+}
+	%\end{equation}
 	\begin{itemize}
 		\item Combined payouts
 		\item Example: Random forest = average of many decision trees

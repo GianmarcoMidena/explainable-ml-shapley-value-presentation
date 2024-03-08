@@ -1,6 +1,6 @@
 \begin{frame}{Linear Model}
 	\begin{itemize}
-		\item prediction
+		\item Prediction
 		\begin{equation}
 			\hat{f}(\bm{x})=w_0+w_1 x_{1} + \dots + w_p x_ p
 		\end{equation}
@@ -8,13 +8,21 @@
 			\item $\bm{x}$: data instance
 			\item $x_j$: value of feature $j$
 			\item $w_j$: weight corresponding to feature $j$
+			\begin{itemize}
+				\item $j$-th feature \textbf{global} importance 
+				\\-Standardized input features
+				\\-(typically) \red{How a \textbf{specific} feature value influences the prediction\\is more interesting!}
+			\end{itemize}
 			\item $p$: nr. features
 		\end{itemize}
-		\item easy to calculate \emph{individual effects}
+		\item No feature interaction $\rightarrow$ \emph{individual effects} are easy to compute
 	\end{itemize}
 \end{frame}
 \begin{frame}{Linear Model - Feature Contribution}
 	\begin{itemize}
+		\item Situational importance of $X_j = x_j$~\cite{achen1982interpreting}
+		\item Contribution of feature $X_j$ with value $x_j$
+		\\minus the expected contribution of feature $X_j$
 		\item $j$-th feature contribution $\phi_j$
 		\begin{align}
 			\begin{split}
@@ -26,6 +34,7 @@
 		\begin{itemize}
 			\item $j$-th feature effect minus average $j$-th feature effect
 			\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
+			\item Same contribution across all instances, regardless of value of other features.
 		\end{itemize}
 	\end{itemize}
 \end{frame}
