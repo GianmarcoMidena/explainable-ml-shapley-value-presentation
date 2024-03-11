@@ -106,17 +106,41 @@
 
 \input{sections/linear_model_feature_contribution.tex}
 
+\begin{frame}{Feature Contribution in General - Example}
+	\begin{itemize}
+		\item<1-> Prediction function: $\hat{f}(x_1, x_2) = x_1 \lor x_2$
+		\item<1-> $x_1, x_2 \sim U(\{0, 1\})$, $E_{X_1,X_2}(\hat{f}(X_1,X_2)) = \frac{3}{4}$
+		\item<1-> E.g., input: $x_1 = 1$, $x_2 = 1$
+		\item<1-> Prediction: $\hat{f}(1, 1) = 1$
+		\item<1-> Gain: $\hat{f}(1, 1) - E_{X_1,X_2}(\hat{f}(X_1,X_2)) = 1 - \frac{3}{4} = \frac{1}{4}$
+		\item<1-> Contribution of feature value $x_1 = 1$
+		\begin{align}\begin{split}
+			\phi_1(\hat{f}) 
+			&=\hat{f}(1, 1)-\frac{1}{2} [\hat{f}(0, 1) + \hat{f}(1, 1)]\\
+			&=1 \lor 1-\frac{1}{2} [0 \lor 1 + 1 \lor 1]\\
+			&=1 -\frac{1}{2} [1 + 1] = 0 \; \red{\neq \frac{1}{8}}
+		\end{split}\end{align}
+		\item<1-> Same issue with contribution of feature value $x_2 = 1$
+		\vspace{1em}
+		\item<2-> \red{Perturbing one feature at a time gives undesirable results!}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Feature Contribution in General}
 	\begin{itemize}
-		\item \emph{Can we do the same for any type of model?}
+		\item<1-> \emph{Can we do the same for any type of model?}
 		\begin{itemize}
 			\item Model-agnostic
 			\item No assumptions on features interactions
 		\end{itemize}
-		\item \red{Nonlinear models need a different solution!}
-		\item Possible solution: \underline{Shapley value}
+		\vspace{2em}
+		\item<2-> Perturbing one feature at a time gives undesirable results
+		\item<2-> Nonlinear models need a different solution
+		\vspace{2em}
+		\item<3-> Possible solution: \underline{Shapley value}
 		\begin{itemize}
 			\item Field: cooperative game theory
+			\item Perturbs all subsets of features
 		\end{itemize}
 	\end{itemize}
 \end{frame}

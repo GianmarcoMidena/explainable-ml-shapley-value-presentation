@@ -21,6 +21,29 @@
 
 \input{sections/shapley_value_function.tex}
 
+\begin{frame}{Shapley Value - Feature Contribution - Example}
+	\begin{itemize}
+		\item Prediction function: $\hat{f}(x_1, x_2) = x_1 \lor x_2$
+		\item $x_1, x_2 \sim U(\{0, 1\})$, $E_{X_1,X_2}(\hat{f}(X_1,X_2)) = \frac{3}{4}$
+		\item E.g., input: $x_1 = 1$, $x_2 = 1$
+		\item Prediction: $\hat{f}(1, 1) = 1$
+		\item Gain: $\hat{f}(1, 1) - E_{X_1,X_2}(\hat{f}(X_1,X_2)) = 1 - \frac{3}{4} = \frac{1}{4}$
+		\item Contribution of feature value $x_1 = 1$
+		\begin{align}\begin{split}
+				\phi_1(val_{\bm{x}})
+				&=\frac{1}{2} \Bigl[\bigl(val_{\bm{x}}\left(\{1\}\right)-val_{\bm{x}}\left(\{\}\right)\bigr) + \bigl(val_{\bm{x}}\left(\{1, 2\}\right)-val_{\bm{x}}\left(\{2\}\right)\bigr)\Bigr]\\
+				&=\frac{1}{2} val_{\bm{x}}\left(\{1, 2\}\right)\\
+				&=\frac{1}{2} \Bigl[\hat{f}(1, 1) - E_{X_1,X_2}\left(\hat{f}(X_1,X_2)\right)\Bigr]\\
+				&=\frac{1}{2} \left[1 - \frac{3}{4}\right] = \frac{1}{8}
+		\end{split}\end{align}
+		\vspace{-2em}
+		\begin{itemize}
+			\item Perturbs all subsets of features
+		\end{itemize}
+		\item Same contribution for feature value $x_2 = 1$
+	\end{itemize}
+\end{frame}
+
 \input{sections/shapley_value_properties.tex}
 
 \begin{frame}{Shapley Value - Exact Estimation}

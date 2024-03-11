@@ -28,13 +28,15 @@
 			\begin{split}
 				\phi_j(\hat{f})
 				&=w_{j}x_j-E(w_{j}X_{j})\\
-				&=w_{j}x_j-w_{j}E(X_{j})
+				&=w_{j}x_j-w_{j}E(X_{j})\\
+				&=\hat{f}(\bm{x}) - E[\hat{f}(x_1, \dots, X_{j}, \dots, x_n)]
 			\end{split}
 		\end{align}
 		\begin{itemize}
 			\item $j$-th feature effect minus average $j$-th feature effect
 			\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
-			\item Same contribution across all instances, regardless of value of other features.
+			\item regardless of value of other features
+			\item perturbs the value of the $i$-th feature only \item keeps the value of all other features
 		\end{itemize}
 	\end{itemize}
 \end{frame}
