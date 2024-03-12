@@ -13,7 +13,7 @@
 \begin{frame}{Shapley Value - Dummy}
 	If
 	\begin{equation}
-		val_{\bm{x}}(S\cup\{j\})=val(S)
+		val_{S\cup\{j\}}(\cdot)=val_S(\cdot)
 	\end{equation}
 	for all
 	\begin{equation*}
@@ -29,7 +29,7 @@
 \end{frame}
 \begin{frame}{Shapley Value - Efficiency}
 	\begin{equation}
-		\sum\nolimits_{j=1}^p\phi_j=\hat{f}(\bm{x})-E_X(\hat{f}(X))
+		\sum\nolimits_{j=1}^p\phi_j\left(\bm{x};\hat{f}\right)=\hat{f}(\bm{x})-\mathbb{E}_X\left[\hat{f}(X)\right]
 	\end{equation}
 	\begin{itemize}
 		\item Feature contributions must \emph{sum} up to prediction for $\bm{x}$ \emph{minus} average prediction
@@ -38,7 +38,7 @@
 \begin{frame}{Shapley Value - Symmetry}
 	If
 	\begin{equation}
-		val_{\bm{x}}(S \cup \{j\})=val(S\cup\{k\})
+		val_{S \cup \{j\}}(\cdot)=val_{S\cup\{k\}}(\cdot)
 	\end{equation}
 	for all
 	\begin{equation*}
@@ -56,7 +56,7 @@
 \begin{frame}{Shapley Value - Additivity}
 	If
 	\begin{equation}
-		val_{\bm{x} + \bm{y}}(S)=val_{\bm{x}}(S) + val_{\bm{y}}(S)
+		val_S(\bm{x} + \bm{y}) = val_S(\bm{x}) + val_S(\bm{y})
 	\end{equation}
 	for all
 	\begin{equation*}

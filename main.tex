@@ -24,6 +24,8 @@
 
 \usepackage{verbatim}
 
+\usepackage{bigints}
+
 \newcommand{\credit}[2]{\par\hfill \footnotesize #1 credit:~\itshape\citeauthor{#2} (\citeyear{#2})}
 \renewcommand{\cite}[1]{(\citeauthor{#1}, \citeyear{#1})}
 \newcommand{\citefoot}[1]{\citeauthor{#1} (\citeyear{#1})}
@@ -31,7 +33,7 @@
 
 \newcommand{\red}[1]{{\color{red} #1}}
 
-\title[XAI with Shapley Value]
+\title[XML with Shapley Value]
 {Explainable Machine Learning\\with Shapley Value}
 %\subtitle{}
 \author{Gianmarco Midena}
@@ -109,13 +111,13 @@
 \begin{frame}{Feature Contribution in General - Example}
 	\begin{itemize}
 		\item<1-> Prediction function: $\hat{f}(x_1, x_2) = x_1 \lor x_2$
-		\item<1-> $x_1, x_2 \sim U(\{0, 1\})$, $E_{X_1,X_2}(\hat{f}(X_1,X_2)) = \frac{3}{4}$
+		\item<1-> $x_1, x_2 \sim U(\{0, 1\})$, $\mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = \frac{3}{4}$
 		\item<1-> E.g., input: $x_1 = 1$, $x_2 = 1$
 		\item<1-> Prediction: $\hat{f}(1, 1) = 1$
-		\item<1-> Gain: $\hat{f}(1, 1) - E_{X_1,X_2}(\hat{f}(X_1,X_2)) = 1 - \frac{3}{4} = \frac{1}{4}$
+		\item<1-> Gain: $\hat{f}(1, 1) - \mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = 1 - \frac{3}{4} = \frac{1}{4}$
 		\item<1-> Contribution of feature value $x_1 = 1$
 		\begin{align}\begin{split}
-			\phi_1(\hat{f}) 
+			\phi^{add}_1\left(x_1, x_2;\hat{f}\right) 
 			&=\hat{f}(1, 1)-\frac{1}{2} [\hat{f}(0, 1) + \hat{f}(1, 1)]\\
 			&=1 \lor 1-\frac{1}{2} [0 \lor 1 + 1 \lor 1]\\
 			&=1 -\frac{1}{2} [1 + 1] = 0 \; \red{\neq \frac{1}{8}}
@@ -140,6 +142,7 @@
 		\item<3-> Possible solution: \underline{Shapley value}
 		\begin{itemize}
 			\item Field: cooperative game theory
+			\item Considers every subset of features
 			\item Perturbs all subsets of features
 		\end{itemize}
 	\end{itemize}
@@ -147,21 +150,20 @@
 
 \input{sections/shapley_value.tex}
 
-\input{sections/shapley_value_issues.tex}
+%\input{sections/shapley_value_issues.tex}
 
 \begin{frame}[fragile]{Software}
-	\begin{itemize}
+	\begin{itemize}\setlength\itemsep{2em}
 		\item \verb|fastshap| (R)~\cite{jethani2021fastshap}
 		\item \verb|iml| (R)~\cite{molnar2018iml}
 		\item \verb|breakDown| (R)~\cite{staniak2018explanations}
 		\item \verb|Shapley.jl| (Julia)~\footnotemark
-		\item \dots
 	\end{itemize}
 	\footnotetext[5]{\href{https://gitlab.com/ExpandingMan/Shapley.jl}{https://gitlab.com/ExpandingMan/Shapley.jl}}
 \end{frame}
 
 \begin{frame}{Shapley Value in Short}
-	\begin{itemize}
+	\begin{itemize}\setlength\itemsep{1em}
 		\item Permutation-based
 		\item Model-agnostic
 		\item Solid theory
