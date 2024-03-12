@@ -1,34 +1,40 @@
 \begin{frame}{Shapley Value - Intuition}
 	\begin{itemize}\setlength\itemsep{4em}
-		\item The average marginal contribution of a feature value over all possible coalitions.
-		\item Shapley value for a feature $j$: average change in prediction that a subset of features receives when the feature $j$ joins them.
+		\item<1-> The average marginal contribution of a feature value over all possible coalitions.
+		\item<2-> Shapley value for a feature $j$: average change in prediction that a subset of features receives when the feature $j$ joins them.
 	\end{itemize}
 \end{frame}
 \begin{frame}{Shapley Value - Feature Contribution}
 \begin{equation}
 	\phi_j(\bm{x})=\frac{1}{p}\sum_{S\subseteq\{1,\ldots,p\} \backslash \{j\}}\binom{p-1}{|S|}^{-1}\left(val_{S\cup\{j\}}(\bm{x})-val_S(\bm{x})\right)
 \end{equation}
-\begin{itemize}
-	\item Contribution of $j$-th feature value to the prediction (\emph{payout})
-	\item Normalized: weighted and summed over all possible feature combinations
-	\item $j$-th feature value
-	\item $val_{\bm{x}}(S)$: value of players in $S$ %\red{to explain $\bm{x}$}
-	\item $S$: a subset of features used in the model (\emph{coalition})
-	\item $\bm{x}$: vector of feature values of an instance to be explained
-	\item $p$: nr. features
+\begin{itemize}\setlength\itemsep{2em}
+	\item[]
+	where
+	\begin{itemize}
+		\item $j$-th feature value
+		\item $val_{\bm{x}}(S)$: value of players in $S$ %\red{to explain $\bm{x}$}
+		\item $S$: a subset of features used in the model (\emph{coalition})
+		\item $\bm{x}$: vector of feature values of an instance to be explained
+		\item $p$: nr. features
+	\end{itemize}
+	\item<1-> Contribution of $j$-th feature value to the prediction (\emph{payout})
+	\item<2-> Normalized: weighted and summed over all possible feature combinations
 \end{itemize}
 \end{frame}
 
 \input{sections/shapley_value_function.tex}
 
-\begin{frame}[shrink=5]{Shapley Value - Feature Contribution - Example}
-	\begin{itemize}\setlength\itemsep{1em}
-		\item Prediction function: $\hat{f}(x_1, x_2) = x_1 \lor x_2$
-		\item $x_1, x_2 \sim U(\{0, 1\})$, $\mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = \frac{3}{4}$
-		\item E.g., input: $x_1 = 1$, $x_2 = 1$
-		\item Prediction: $\hat{f}(1, 1) = 1$
-		\item Gain: $\hat{f}(1, 1) - \mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = 1 - \frac{3}{4} = \frac{1}{4}$
-		\item Contribution of feature value $x_1 = 1$
+\begin{frame}[shrink=3]{Shapley Value - Feature Contribution - Example}
+	\begin{itemize}
+		\item<1-> Prediction function: $\hat{f}(x_1, x_2) = x_1 \lor x_2$
+		\item<1-> $x_1, x_2 \sim U(\{0, 1\})$, $\mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = \frac{3}{4}$
+		\vspace{1em}
+		\item<2-> E.g., input: $x_1 = 1$, $x_2 = 1$
+		\item<2-> Prediction: $\hat{f}(1, 1) = 1$
+		\item<2-> Gain: $\hat{f}(1, 1) - \mathbb{E}_{X_1,X_2}\left[\hat{f}(X_1,X_2)\right] = 1 - \frac{3}{4} = \frac{1}{4}$
+		\vspace{1em}
+		\item<3-> Contribution of feature value $x_1 = 1$
 		\begin{align}\begin{split}
 				\phi_1\left(x_1, x_2;\hat{f}\right)
 				&=\frac{1}{2} \biggl[val_{\{1\}}\left(\bm{x};\hat{f}\right)-val_{\{\}}\left(\bm{x};\hat{f}\right)\\
@@ -39,13 +45,11 @@
 		\end{split}\end{align}
 		\vspace{-0.5em}
 		\begin{itemize}
-			\item Perturbs all subsets of features
+			\item<3-> Perturbs all subsets of features
 		\end{itemize}
-		\item Same contribution for feature value $x_2 = 1$
+		\item<4-> Same contribution for feature value $x_2 = 1$
 	\end{itemize}
 \end{frame}
-
-\input{sections/shapley_value_properties.tex}
 
 \begin{frame}{Shapley Value - Exact Estimation}
 	\begin{itemize}\setlength\itemsep{4em}

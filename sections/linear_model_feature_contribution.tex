@@ -4,11 +4,10 @@
 		\begin{equation}
 			\hat{f}(\bm{x})=w_0+w_1 x_{1} + \dots + w_p x_ p
 		\end{equation}
-		\begin{itemize}
-			\item $\bm{x}$: data instance
+		\begin{itemize}\setlength\itemsep{0.5em}
 			\item $x_j$: value of feature $j$
 			\item $w_j$: weight corresponding to feature $j$
-			\begin{itemize}
+			\begin{itemize}\setlength\itemsep{0.5em}
 				\item $j$-th feature \textbf{global} importance 
 				\\-Standardized input features
 				\\-(typically) \red{How a \textbf{specific} feature value influences the prediction\\is more interesting!}
@@ -18,7 +17,7 @@
 		\item<2-> No feature interaction $\rightarrow$ \emph{individual effects} are easy to compute
 	\end{itemize}
 \end{frame}
-\begin{frame}{Linear Model - Feature Contribution}
+\begin{frame}[shrink=20]{Linear Model - Feature Contribution}
 	\begin{align}
 		\begin{split}
 			\phi^{add}_j\left(\bm{x};\hat{f}\right)
@@ -27,21 +26,26 @@
 			&=\hat{f}(\bm{x}) - \mathbb{E}\left[\hat{f}(x_1, \dots, X_{j}, \dots, x_n)\right]
 		\end{split}
 	\end{align}
-	\begin{itemize}
-		\item $j$-th feature contribution
-		\item Contribution of feature $X_j$ with value $x_j$
+	\begin{itemize}\setlength\itemsep{0.5em}
+		\item[]
+		where
+		\begin{itemize}
+			\item $\mathbb{E}(w_{j}X_{j})$: mean effect estimate for feature $j$
+		\end{itemize}
+		\vspace{0.5em}
+		\item<1-> $j$-th feature contribution
+		\item<2-> $j$-th feature effect minus average $j$-th feature effect
+		\item<3-> Contribution of feature $X_j$ with value $x_j$
 		\\minus the expected contribution of feature $X_j$
-		\item $j$-th feature effect minus average $j$-th feature effect
-		\item Model prediction
+		\item<4-> Model prediction
 		\\minus expected prediction if $j$-th feature value is not known
-		\item Independent of the values of the other features
-		\item Perturbs the value of the $i$-th feature only
-		\item Keeps the value of all other features
-		\item Situational importance of $X_j = x_j$~\cite{achen1982interpreting}
-		\item $\mathbb{E}(w_{j}X_{j})$: mean effect estimate for feature $j$
+		\item<5-> Perturbs the value of the $j$-th feature only
+		\item<6-> Keeps the value of all other features
+		\item<7-> Independent w.r.t. the values of all the features but $j$
+		\item<8-> Situational importance of $X_j = x_j$~\cite{achen1982interpreting}
 	\end{itemize}
 \end{frame}
-\begin{frame}{Linear Model - Total Feature Contribution}
+\begin{frame}[shrink=20]{Linear Model - Total Feature Contribution}
 	\begin{align}
 		\begin{split}
 			\sum_{j=1}^{p}\phi^{add}_j\left(\bm{x};\hat{f}\right) =&\sum_{j=1}^p\bigl(w_{j}x_j-\mathbb{E}\left[w_{j}X_{j}\right]\bigr)\\
@@ -49,13 +53,17 @@
 			=&\hat{f}(\bm{x})-\mathbb{E}\left[\hat{f}(X)\right]
 		\end{split}
 	\end{align}
-	\begin{itemize}
-		\item predicted value minus average predicted value
-		\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
-		\item $\phi_j$: $j$-th feature contribution
-		\item $\bm{x}$: data instance
-		\item $x_j$: value of feature $j$
-		\item $w_j$: weight corresponding to feature $j$
-		\item $p$: nr. features
+	\begin{itemize}\setlength\itemsep{2em}
+		\item[]
+		where
+		\begin{itemize}
+			\item $E(w_{j}X_{j})$: mean effect estimate for feature $j$
+			\item $\phi_j$: $j$-th feature contribution
+			\item $\bm{x}$: data instance
+			\item $x_j$: value of feature $j$
+			\item $w_j$: weight corresponding to feature $j$
+			\item $p$: nr. features
+		\end{itemize}
+		\item<2-> predicted value minus average predicted value
 	\end{itemize}
 \end{frame}
